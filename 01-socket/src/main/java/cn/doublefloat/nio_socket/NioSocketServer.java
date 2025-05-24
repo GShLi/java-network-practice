@@ -33,14 +33,19 @@ public class NioSocketServer {
           System.out.println("等待请求超时...");
           continue;
         }
+
         System.out.println("处理请求...");
+
         Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+
         while (iterator.hasNext()) {
           SelectionKey key = iterator.next();
           try {
+            // 接收到连接请求时
             if (key.isAcceptable()) {
               handler.handleAccept(key);
             }
+            // 读数据
             if (key.isReadable()) {
               handler.handleRead(key);
             }
@@ -49,6 +54,7 @@ public class NioSocketServer {
             e.printStackTrace();
             continue;
           }
+          // 移除已处理的 SelectionKey
           iterator.remove();
         }
       }
@@ -58,6 +64,7 @@ public class NioSocketServer {
     }
   }
 
+  /** 请求处理器 */
   private static class Handler {
 
     private int bufferSize = 1024;
