@@ -1,4 +1,4 @@
-package cn.doublefloat;
+package cn.doublefloat.socket;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

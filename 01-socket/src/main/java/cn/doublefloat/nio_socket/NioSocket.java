@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
+import java.util.Iterator;
 
 /**
  * @author Double
@@ -25,9 +26,28 @@ public class NioSocket {
       Selector selector = Selector.open();
       ssc.register(selector, SelectionKey.OP_ACCEPT);
 
+      Handler handler = new Handler();
+      while (true) {
+
+        if (selector.select(3000) == 0) {
+          System.out.println("等待请求超时...");
+          continue;
+        }
+        System.out.println("处理请求...");
+        Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+        while (iterator.hasNext()) {
+          SelectionKey key = iterator.next();
+          if (key.isAcceptable()) {}
+        }
+      }
 
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  private static class Handler {
+    private final int bufferSize = 1024;
+    private final String localCharset = "UTF-8";
   }
 }
