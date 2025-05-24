@@ -23,7 +23,6 @@
   </developers>
   <modules>
     <module>01-socket</module>
-    <module>02-nio-socket</module>
   </modules>
   <scm>
     <connection/>
