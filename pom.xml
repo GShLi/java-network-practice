@@ -23,7 +23,7 @@
   </developers>
   <modules>
     <module>01-basic</module>
-    <module>02-file-io</module>
+    <module>02-io</module>
     <module>03-network</module>
   </modules>
   <scm>

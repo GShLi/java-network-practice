@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>cn.doublefloat</groupId>
-    <artifactId>java-network-practice</artifactId>
+    <artifactId>02-file-io</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>02-file-io</artifactId>
+  <artifactId>01-basic-io</artifactId>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
